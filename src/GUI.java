@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -31,7 +32,7 @@ public class GUI {
     }
 
     public void register() {
-        frameReg = new JFrame();
+        frameReg = new JFrame("Register");
         panelReg = new JPanel();
         frameReg.setSize(450, 200);
         frameReg.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -61,7 +62,7 @@ public class GUI {
                 new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                         try {
-                            app.Register();
+                            app.registerSequence();
                         } catch (Exception ex) {
                             throw new RuntimeException(ex);
                         }
@@ -90,7 +91,7 @@ public class GUI {
     }
 
     public void login() {
-        frameLog = new JFrame();
+        frameLog = new JFrame("Login");
         panelLog = new JPanel();
 
         frameLog.setSize(450, 200);
@@ -121,7 +122,7 @@ public class GUI {
                 new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                         try {
-                            app.Login();
+                            app.loginSequence();
                         } catch (Exception ex) {
                             throw new RuntimeException(ex);
                         }
