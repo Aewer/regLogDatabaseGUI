@@ -8,8 +8,10 @@ public class App {
     public void registerSequence() throws SQLException {
         register.setUsername(GUI.userTextReg.getText());
         register.setPassword(GUI.passwordTextReg.getText().toCharArray());
-        if (register.checkPassword()) {
-            register.registerToDatabase();
+        if (register.checkEmail()) {
+            if (register.checkPassword()) {
+                register.registerToDatabase();
+            }
         }
     }
     public void loginSequence() throws SQLException {

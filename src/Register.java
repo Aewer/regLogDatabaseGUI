@@ -1,3 +1,5 @@
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.*;
@@ -11,6 +13,17 @@ public class Register {
     private static final String DB_URL = "jdbc:postgresql://localhost:5432/postgres";
     Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
     public Register() throws SQLException {
+    }
+    public boolean checkEmail() {
+        boolean result = true;
+        try {
+            InternetAddress emailAddr = new InternetAddress(username);
+            emailAddr.validate();
+        } catch (AddressException ex) {
+            GUI.registerSuccess.setText("Invalid Email");
+            result = false;
+        }
+        return result;
     }
 
     public boolean checkPassword() {
