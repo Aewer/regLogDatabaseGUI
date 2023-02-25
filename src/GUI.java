@@ -6,6 +6,7 @@ import java.sql.SQLException;
 
 public class GUI {
     App app = new App();
+    Recover recover = new Recover();
     public static JTextField userTextReg;
     public static JPasswordField passwordTextReg;
     public static JLabel registerSuccess;
@@ -15,11 +16,16 @@ public class GUI {
     public static JPasswordField passwordTextLog;
     public static JLabel loginSuccess;
 
+    public static JTextField codeText;
+    public static JPasswordField newPasswordTextLog;
+    public static JLabel recoverSuccess;
+    public static JTextField userTextRec;
+
     public GUI() throws SQLException {
     }
 
     public void register() throws SQLException {
-        JFrame frameReg = makeFrame("Register", 450, 200);
+        JFrame frameReg = makeFrame("Register", 500, 200);
         JPanel panelReg = new JPanel();
         panelReg.setLayout(null);
         frameReg.add(panelReg);
@@ -35,6 +41,9 @@ public class GUI {
 
         passwordTextReg = makePasswordField(100, 50, 165, 25);
         panelReg.add(passwordTextReg);
+
+        registerSuccess = makeLabel("", 10, 110, 550, 25);
+        panelReg.add(registerSuccess);
 
         JButton buttonRegister = new JButton("Register");
         buttonRegister.setBounds(10, 80, 100, 25);
@@ -63,14 +72,12 @@ public class GUI {
         );
         panelReg.add(buttonGoToLogin);
 
-        registerSuccess = makeLabel("", 10, 110, 550, 25);
-        panelReg.add(registerSuccess);
 
         frameReg.setVisible(true);
     }
 
     public void login() {
-        JFrame frameLog = makeFrame("Login", 450, 200);
+        JFrame frameLog = makeFrame("Login", 500, 200);
         JPanel panelLog = new JPanel();
         panelLog.setLayout(null);
         frameLog.add(panelLog);
@@ -86,6 +93,10 @@ public class GUI {
 
         passwordTextLog = makePasswordField(100, 50, 165, 25);
         panelLog.add(passwordTextLog);
+
+        loginSuccess = makeLabel("", 10, 110, 300, 25);
+        panelLog.add(loginSuccess);
+
 
         JButton buttonLogin = new JButton("Login");
         buttonLogin.setBounds(10, 80, 80, 25);
@@ -117,10 +128,61 @@ public class GUI {
         );
         panelLog.add(buttonGoToRegister);
 
-        loginSuccess = makeLabel("", 10, 110, 300, 25);
-        panelLog.add(loginSuccess);
+        JButton recoverPasswordButton = new JButton("Recover password");
+        recoverPasswordButton.setBounds(250, 130, 180, 25);
+        recoverPasswordButton.addActionListener(
+                new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        frameLog.setVisible(false);
+                        recoverPassword();
+                    }
+                }
+        );
+        panelLog.add(recoverPasswordButton);
 
         frameLog.setVisible(true);
+
+    }
+    public void recoverPassword() {
+        JFrame frameRec = makeFrame("Recover", 500, 200);
+        JPanel panelLog = new JPanel();
+        panelLog.setLayout(null);
+        frameRec.add(panelLog);
+
+        JLabel userLabelLog = makeLabel("User", 10, 20, 80, 25);
+        panelLog.add(userLabelLog);
+
+        userTextRec = makeTextField(20, 100, 20, 165, 25);
+        panelLog.add(userTextRec);
+
+        JLabel codeLabel = makeLabel("Code", 10, 50, 80, 25);
+        panelLog.add(codeLabel);
+
+        codeText = makeTextField(20, 100, 50, 165, 25);
+        panelLog.add(codeText);
+
+        JLabel newPasswordLabelLog = makeLabel("Password", 10, 80, 80, 25);
+        panelLog.add(newPasswordLabelLog);
+
+        newPasswordTextLog = makePasswordField(100, 80, 165, 25);
+        panelLog.add(newPasswordTextLog);
+
+        recoverSuccess = makeLabel("Enter your email into the user field and press send code to send recovery code", 10, 110, 500, 25);
+        panelLog.add(recoverSuccess);
+
+        JButton buttonBackGoToLogin = new JButton("Go back to login");
+        buttonBackGoToLogin.setBounds(10, 130, 200, 25);
+        buttonBackGoToLogin.addActionListener(
+                new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        frameRec.setVisible(false);
+                        login();
+                    }
+                }
+        );
+        panelLog.add(buttonBackGoToLogin);
+
+        frameRec.setVisible(true);
     }
     public JFrame makeFrame(String name, int width, int height) {
         JFrame newFrame = new JFrame(name);

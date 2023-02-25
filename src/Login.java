@@ -7,7 +7,6 @@ public class Login {
     private static final String DB_PASSWORD = "slawa111111";
     private static final String DB_URL = "jdbc:postgresql://localhost:5432/postgres";
     Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
-    TelegramLog log = new TelegramLog();
     private int att = 3;
 
     public Login() throws SQLException {

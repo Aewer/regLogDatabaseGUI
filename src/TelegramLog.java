@@ -8,10 +8,8 @@ public class TelegramLog {
     public static void sendToTelegram(String text) {
         String urlString = "https://api.telegram.org/bot%s/sendMessage?chat_id=%s&text=%s";
 
-        //Add Telegram token (given Token is fake)
         String apiToken = "5672191839:AAHknPz4Wfj2sD7sjVIfkg56DEbyCvW5d70";
 
-        //Add chatId (given chatId is fake)
         String chatId = "1852555022";
 
         urlString = String.format(urlString, apiToken, chatId, text);

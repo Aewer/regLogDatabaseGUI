@@ -5,13 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="65be328e-c5ee-4f21-a863-e2802d0bb1eb" name="Changes" comment="commit">
-      <change afterPath="$PROJECT_DIR$/lib/javax.mail.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/javax_mail__2_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EmailSender.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Recover.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/activation.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/ae349fdb-1445-466f-9f24-392049190832.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ae349fdb-1445-466f-9f24-392049190832.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/ae349fdb-1445-466f-9f24-392049190832/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ae349fdb-1445-466f-9f24-392049190832/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authRecoverGUI.iml" beforeDir="false" afterPath="$PROJECT_DIR$/authRecoverGUI.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Register.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TelegramLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TelegramLog.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,12 +52,13 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "jdk.selected.JAVA_MODULE": "11",
-    "last_opened_file_path": "C:/Users/slawa/IdeaProjects/regLogRecoverGUI/lib",
+    "last_opened_file_path": "C:/Users/slawa/IdeaProjects/regLogRecoverGUI/src",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -74,6 +78,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\slawa\IdeaProjects\regLogRecoverGUI\src" />
       <recent name="C:\Users\slawa\IdeaProjects\regLogRecoverGUI\lib" />
     </key>
   </component>
@@ -99,7 +104,8 @@
       <workItem from="1676729233745" duration="984000" />
       <workItem from="1676880669784" duration="304000" />
       <workItem from="1677241127453" duration="12420000" />
-      <workItem from="1677292909516" duration="7149000" />
+      <workItem from="1677292909516" duration="8932000" />
+      <workItem from="1677305540359" duration="7124000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1676729621309</created>
@@ -122,7 +128,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677297592309</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="commit">
+      <created>1677300098469</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1677300098469</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
