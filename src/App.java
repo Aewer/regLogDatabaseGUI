@@ -18,5 +18,3 @@ public class App {
         login.login();
     }
 }
-//5672191839:AAHknPz4Wfj2sD7sjVIfkg56DEbyCvW5d70
-//1852555022

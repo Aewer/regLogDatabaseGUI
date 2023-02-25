@@ -6,57 +6,37 @@ import java.sql.SQLException;
 
 public class GUI {
     App app = new App();
-
-    public static JFrame frameReg;
-    private static JPanel panelReg;
-    private static JLabel userLabelReg;
     public static JTextField userTextReg;
-    private static JLabel passwordLabelReg;
     public static JPasswordField passwordTextReg;
-    private static JButton buttonGoToLogin;
-    private static JButton buttonRegister;
     public static JLabel registerSuccess;
 
 
-    public static JFrame frameLog;
-    private static JPanel panelLog;
-    private static JLabel userLabelLog;
     public static JTextField userTextLog;
-    private static JLabel passwordLabelLog;
     public static JPasswordField passwordTextLog;
-    private static JButton buttonLogin;
-    private static JButton buttonGoToRegister;
     public static JLabel loginSuccess;
 
     public GUI() throws SQLException {
     }
 
-    public void register() {
-        frameReg = new JFrame("Register");
-        panelReg = new JPanel();
-        frameReg.setSize(450, 200);
-        frameReg.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    public void register() throws SQLException {
+        JFrame frameReg = makeFrame("Register", 450, 200);
+        JPanel panelReg = new JPanel();
+        panelReg.setLayout(null);
         frameReg.add(panelReg);
 
-        panelReg.setLayout(null);
-
-        userLabelReg = new JLabel("User");
-        userLabelReg.setBounds(10, 20, 80, 25);
+        JLabel userLabelReg = makeLabel("User", 10, 20, 80, 25);
         panelReg.add(userLabelReg);
 
-        userTextReg = new JTextField(20);
-        userTextReg.setBounds(100, 20, 165, 25);
+        userTextReg = makeTextField(20, 100, 20, 165, 25);
         panelReg.add(userTextReg);
 
-        passwordLabelReg = new JLabel("Password");
-        passwordLabelReg.setBounds(10, 50, 80, 25);
+        JLabel passwordLabelReg = makeLabel("Password", 10, 50, 80, 25);
         panelReg.add(passwordLabelReg);
 
-        passwordTextReg = new JPasswordField();
-        passwordTextReg.setBounds(100, 50, 165, 25);
+        passwordTextReg = makePasswordField(100, 50, 165, 25);
         panelReg.add(passwordTextReg);
 
-        buttonRegister = new JButton("Register");
+        JButton buttonRegister = new JButton("Register");
         buttonRegister.setBounds(10, 80, 100, 25);
         buttonRegister.addActionListener(
                 new ActionListener() {
@@ -71,7 +51,7 @@ public class GUI {
         );
         panelReg.add(buttonRegister);
 
-        buttonGoToLogin = new JButton("Log into existing account");
+        JButton buttonGoToLogin = new JButton("Log into existing account");
         buttonGoToLogin.setBounds(10, 130, 200, 25);
         buttonGoToLogin.addActionListener(
                 new ActionListener() {
@@ -83,40 +63,31 @@ public class GUI {
         );
         panelReg.add(buttonGoToLogin);
 
-        registerSuccess = new JLabel("");
-        registerSuccess.setBounds(10, 110, 550, 25);
+        registerSuccess = makeLabel("", 10, 110, 550, 25);
         panelReg.add(registerSuccess);
 
         frameReg.setVisible(true);
     }
 
     public void login() {
-        frameLog = new JFrame("Login");
-        panelLog = new JPanel();
-
-        frameLog.setSize(450, 200);
-        frameLog.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        JFrame frameLog = makeFrame("Login", 450, 200);
+        JPanel panelLog = new JPanel();
+        panelLog.setLayout(null);
         frameLog.add(panelLog);
 
-        panelLog.setLayout(null);
-
-        userLabelLog = new JLabel("User");
-        userLabelLog.setBounds(10, 20, 80, 25);
+        JLabel userLabelLog = makeLabel("User", 10, 20, 80, 25);
         panelLog.add(userLabelLog);
 
-        userTextLog = new JTextField(20);
-        userTextLog.setBounds(100, 20, 165, 25);
+        userTextLog = makeTextField(20, 100, 20, 165, 25);
         panelLog.add(userTextLog);
 
-        passwordLabelLog = new JLabel("Password");
-        passwordLabelLog.setBounds(10, 50, 80, 25);
+        JLabel passwordLabelLog = makeLabel("Password", 10, 50, 80, 25);
         panelLog.add(passwordLabelLog);
 
-        passwordTextLog = new JPasswordField();
-        passwordTextLog.setBounds(100, 50, 165, 25);
+        passwordTextLog = makePasswordField(100, 50, 165, 25);
         panelLog.add(passwordTextLog);
 
-        buttonLogin = new JButton("Login");
+        JButton buttonLogin = new JButton("Login");
         buttonLogin.setBounds(10, 80, 80, 25);
         buttonLogin.addActionListener(
                 new ActionListener() {
@@ -130,22 +101,52 @@ public class GUI {
                 }
         );
         panelLog.add(buttonLogin);
-        buttonGoToRegister = new JButton("Register a new account");
+        JButton buttonGoToRegister = new JButton("Register a new account");
         buttonGoToRegister.setBounds(10, 130, 200, 25);
         buttonGoToRegister.addActionListener(
                 new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                         frameLog.setVisible(false);
-                        register();
+                        try {
+                            register();
+                        } catch (SQLException ex) {
+                            throw new RuntimeException(ex);
+                        }
                     }
                 }
         );
         panelLog.add(buttonGoToRegister);
 
-        loginSuccess = new JLabel("");
-        loginSuccess.setBounds(10, 110, 300, 25);
+        loginSuccess = makeLabel("", 10, 110, 300, 25);
         panelLog.add(loginSuccess);
 
         frameLog.setVisible(true);
     }
+    public JFrame makeFrame(String name, int width, int height) {
+        JFrame newFrame = new JFrame(name);
+        JPanel newPanel = new JPanel();
+        newFrame.setSize(width, height);
+        newFrame.setLocationRelativeTo(null);
+        newFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        newFrame.add(newPanel);
+
+        newPanel.setLayout(null);
+        return newFrame;
+    }
+    public JLabel makeLabel(String text, int x, int y, int width, int height) {
+        JLabel newLabel = new JLabel(text);
+        newLabel.setBounds(x, y, width, height);
+        return newLabel;
+    }
+    public JTextField makeTextField(int length, int x, int y, int width, int height) {
+        JTextField newTextField = new JTextField(length);
+        newTextField.setBounds(x, y, width, height);
+        return newTextField;
+    }
+    public JPasswordField makePasswordField(int x, int y, int width, int height) {
+        JPasswordField newPasswordField = new JPasswordField();
+        newPasswordField.setBounds(x, y, width, height);
+        return newPasswordField;
+    }
+
 }
