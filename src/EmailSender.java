@@ -13,10 +13,10 @@ public class EmailSender {
     public EmailSender() throws SQLException {
     }
 
-    public boolean emailSender(String email)
+    public void emailSender(String email)
     {
         String to = email;
-        String from = "recovery23728@gmail.com";
+        String from = "aewer321@gmail.com";
         String host = "smtp.gmail.com";
         Properties properties = System.getProperties();
         properties.put("mail.smtp.host", host);
@@ -28,7 +28,8 @@ public class EmailSender {
 
             protected PasswordAuthentication getPasswordAuthentication()
             {
-                return new PasswordAuthentication("recovery23728@gmail.com", "eqjzdpxkkobavcvm");
+                //return new PasswordAuthentication("recovery23728@gmail.com", "eqjzdpxkkobavcvm");
+                return new PasswordAuthentication("aewer321@gmail.com", "xojhroigbipfvaom");
             }
 
         });
@@ -42,30 +43,10 @@ public class EmailSender {
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
             message.setSubject("Password recovery");
             message.setText("The recovery code is:" + code);
-            GUI.loginSuccess.setText("Sending...");
             Transport.send(message);
-            GUI.loginSuccess.setText("Enter recovery code into password field");
         }
         catch (MessagingException mex) {
             throw new RuntimeException(mex);
-        }
-        String check;
-        while (true) {
-            if (GUI.passwordTextLog.getText().equals("")) {
-                GUI.loginSuccess.setText("Enter recovery code into password field");
-            } else {
-                check = GUI.passwordTextLog.getText();
-                break;
-            }
-        }
-        if(check.equals(code))
-        {
-            GUI.passwordTextLog.setText("");
-            return true;
-        }
-        else
-        {
-            return false;
         }
     }
 }

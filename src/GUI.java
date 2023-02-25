@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -17,7 +16,7 @@ public class GUI {
     public static JLabel loginSuccess;
 
     public static JTextField codeText;
-    public static JPasswordField newPasswordTextLog;
+    public static JPasswordField newPasswordText;
     public static JLabel recoverSuccess;
     public static JTextField userTextRec;
 
@@ -33,13 +32,13 @@ public class GUI {
         JLabel userLabelReg = makeLabel("User", 10, 20, 80, 25);
         panelReg.add(userLabelReg);
 
-        userTextReg = makeTextField(20, 100, 20, 165, 25);
+        userTextReg = makeTextField(20, 100, 20, 200, 25);
         panelReg.add(userTextReg);
 
         JLabel passwordLabelReg = makeLabel("Password", 10, 50, 80, 25);
         panelReg.add(passwordLabelReg);
 
-        passwordTextReg = makePasswordField(100, 50, 165, 25);
+        passwordTextReg = makePasswordField(100, 50, 200, 25);
         panelReg.add(passwordTextReg);
 
         registerSuccess = makeLabel("", 10, 110, 550, 25);
@@ -85,13 +84,13 @@ public class GUI {
         JLabel userLabelLog = makeLabel("User", 10, 20, 80, 25);
         panelLog.add(userLabelLog);
 
-        userTextLog = makeTextField(20, 100, 20, 165, 25);
+        userTextLog = makeTextField(20, 100, 20, 200, 25);
         panelLog.add(userTextLog);
 
         JLabel passwordLabelLog = makeLabel("Password", 10, 50, 80, 25);
         panelLog.add(passwordLabelLog);
 
-        passwordTextLog = makePasswordField(100, 50, 165, 25);
+        passwordTextLog = makePasswordField(100, 50, 200, 25);
         panelLog.add(passwordTextLog);
 
         loginSuccess = makeLabel("", 10, 110, 300, 25);
@@ -161,11 +160,11 @@ public class GUI {
         codeText = makeTextField(20, 100, 50, 165, 25);
         panelLog.add(codeText);
 
-        JLabel newPasswordLabelLog = makeLabel("Password", 10, 80, 80, 25);
-        panelLog.add(newPasswordLabelLog);
+        JLabel newPasswordLabel = makeLabel("Password", 10, 80, 80, 25);
+        panelLog.add(newPasswordLabel);
 
-        newPasswordTextLog = makePasswordField(100, 80, 165, 25);
-        panelLog.add(newPasswordTextLog);
+        newPasswordText = makePasswordField(100, 80, 165, 25);
+        panelLog.add(newPasswordText);
 
         recoverSuccess = makeLabel("Enter your email into the user field and press send code to send recovery code", 10, 110, 500, 25);
         panelLog.add(recoverSuccess);
@@ -181,6 +180,47 @@ public class GUI {
                 }
         );
         panelLog.add(buttonBackGoToLogin);
+
+        JButton sendCode = new JButton("Send code");
+        sendCode.setBounds(300, 20, 150, 25);
+        sendCode.addActionListener(
+                new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        try {
+                            recover.sendCode();
+                        } catch (SQLException ex) {
+                            throw new RuntimeException(ex);
+                        }
+                    }
+                }
+        );
+        panelLog.add(sendCode);
+
+        JButton checkCode = new JButton("Check code");
+        checkCode.setBounds(300, 50, 150, 25);
+        checkCode.addActionListener(
+                new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        recover.checkCode();
+                    }
+                }
+        );
+        panelLog.add(checkCode);
+
+        JButton confirmPassword = new JButton("Confirm password");
+        confirmPassword.setBounds(300, 80, 150, 25);
+        confirmPassword.addActionListener(
+                new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        try {
+                            recover.makeNewPassword();
+                        } catch (SQLException ex) {
+                            throw new RuntimeException(ex);
+                        }
+                    }
+                }
+        );
+        panelLog.add(confirmPassword);
 
         frameRec.setVisible(true);
     }
